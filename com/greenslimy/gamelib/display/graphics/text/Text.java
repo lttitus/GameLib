@@ -15,7 +15,7 @@ import com.greenslimy.gamelib.display.graphics.Drawable;
  * @author Green
  *
  */
-public abstract class Text extends Drawable {
+public class Text extends Drawable {
 	
 	public String text;
 	
@@ -43,9 +43,26 @@ public abstract class Text extends Drawable {
 		this(Color.WHITE, s, x, y);
 	}
 	
-	public abstract void update();
+	public void update(Color c) {
+		this.c = c;
+	}
+	
+	public void update(String text) {
+		this.text = text;
+	}
+	
+	public void update(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+	
+	public void update(String text, int x, int y) {
+		this.update(x, y);
+		this.text = text;
+	}
 
 	public void draw(Graphics g) {
+		g.setColor(c);
 		g.drawString(text, x, y);
 	}
 

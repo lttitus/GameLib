@@ -25,16 +25,16 @@ public abstract class Drawable {
 		this(Color.WHITE, x, y, 0, 0);
 	}
 	
-	public void predraw(Graphics g) {
+	/*public void predraw(Graphics g) {
 		g.setColor(c);
-	}
+	}*/
 	
 	/**
 	 * This is called after the Drawable is removed from the active render list.
 	 */
 	public void removed() { }
 
-	public abstract void update();
+	//public abstract void update();
 	/**
 	 * The default draw method for all drawable objects.
 	 * @param g The Graphics object it will be drawn to.

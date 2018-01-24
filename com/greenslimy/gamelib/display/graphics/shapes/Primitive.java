@@ -19,7 +19,7 @@ public abstract class Primitive extends Drawable {
 		}
 	}*/
 	
-	public abstract void update();
+	//public abstract void update();
 	
 	/**
 	 * Does the necessary updates for the primitive.

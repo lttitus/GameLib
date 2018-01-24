@@ -43,6 +43,6 @@ public abstract class Sprite extends Drawable {
 		g.drawImage(img, x, y, null);
 	}
 
-	public abstract void update();
+	//public abstract void update();
 
 }

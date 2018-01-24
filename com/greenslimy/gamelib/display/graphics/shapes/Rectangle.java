@@ -33,9 +33,9 @@ public class Rectangle extends Primitive {
 	/**
 	 * Calls <b>updateRectangle()</b>
 	 */
-	public void update() {
+	/*public void update() {
 		updateRectangle();
-	}
+	}*/
 
 	/**
 	 * This update sequence finds the minimum x, y and the maximum x, y.<br>
@@ -76,7 +76,7 @@ public class Rectangle extends Primitive {
 	 * You must Override this method in order to use it.<br>
 	 * This is not required, so it is not an abstract.
 	 */
-	protected void updateRectangle() { }
+	//protected void updateRectangle() { }
 	
 	public void changePoints(int x, int y, int w, int h) {
 		this.x = x;

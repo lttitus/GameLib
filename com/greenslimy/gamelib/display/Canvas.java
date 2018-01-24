@@ -27,8 +27,10 @@ public class Canvas extends JPanel {
 			d = i.next();
 			if(d != null) {
 				if(!d.destroy) {	//Do not render objects that are marked to be destroyed
-					d.predraw(g);
 					d.draw(g);
+				}else{	//Instead, remove them from the active-render list.
+					i.remove();
+					d.removed();
 				}
 			}
 		}
