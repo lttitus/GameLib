@@ -1,12 +1,11 @@
 package com.greenslimy.gamelib;
 
-import java.awt.Dimension;
 import java.awt.MouseInfo;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 
 import com.greenslimy.gamelib.display.Display;
 import com.greenslimy.gamelib.display.graphics.Drawable;
@@ -54,11 +53,12 @@ public abstract class GUIGame extends Game implements KeyListener, MouseListener
 		return disp.addDrawable(d);
 	}
 
-	//private Drawable d;
+	protected Point mousePoint;
 	/**
 	 * Calls <b>logicUpdate()</b>, automatically handles updating and destroying(removing) Drawables.<br>
 	 */
 	private void logic() {
+		mousePoint = getMousePosition();
 		logicUpdate();	//Leave the logic updates to the user of the framework.
 	}
 	
@@ -113,10 +113,12 @@ public abstract class GUIGame extends Game implements KeyListener, MouseListener
 		
 	}
 
+	protected Point mousePressPoint;
 	public void mousePressed(MouseEvent me) {
 		mPressed = true;
-		mpx = me.getX();
-		mpy = me.getY();
+		mousePressPoint = getMousePosition();
+		/*mpx = me.getX();
+		mpy = me.getY();*/
 		if(me.getButton() == MouseEvent.BUTTON1) {	//Left
 			mLeftPressed = true;
 		}else if(me.getButton() == MouseEvent.BUTTON3) {	//Right
@@ -135,8 +137,9 @@ public abstract class GUIGame extends Game implements KeyListener, MouseListener
 		mouseRelease();
 	}
 	
-	public Dimension getMousePosition() {
-		return new Dimension(MouseInfo.getPointerInfo().getLocation().x, MouseInfo.getPointerInfo().getLocation().y);
+	public Point getMousePosition() {
+		Point dim = MouseInfo.getPointerInfo().getLocation();
+		return new Point(dim.x, dim.y);
 	}
 	
 	protected abstract void mousePress();
