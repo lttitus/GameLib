@@ -62,11 +62,6 @@ public abstract class GUIGame extends Game implements KeyListener, MouseListener
 		logicUpdate();	//Leave the logic updates to the user of the framework.
 	}
 	
-	protected boolean mPressed = false;
-	protected boolean mLeftPressed = false;
-	protected boolean mRightPressed = false;
-	protected int mpx, mpy;
-	
 	/**
 	 * Called every update, right before rendering the drawables.
 	 */
@@ -113,12 +108,13 @@ public abstract class GUIGame extends Game implements KeyListener, MouseListener
 		
 	}
 
+	protected boolean mPressed = false;
+	protected boolean mLeftPressed = false;
+	protected boolean mRightPressed = false;
 	protected Point mousePressPoint;
 	public void mousePressed(MouseEvent me) {
 		mPressed = true;
-		mousePressPoint = getMousePosition();
-		/*mpx = me.getX();
-		mpy = me.getY();*/
+		mousePressPoint = mousePoint;
 		if(me.getButton() == MouseEvent.BUTTON1) {	//Left
 			mLeftPressed = true;
 		}else if(me.getButton() == MouseEvent.BUTTON3) {	//Right
@@ -137,12 +133,12 @@ public abstract class GUIGame extends Game implements KeyListener, MouseListener
 		mouseRelease();
 	}
 	
+	protected abstract void mousePress();
+	protected abstract void mouseRelease();
+	
 	public Point getMousePosition() {
 		Point dim = MouseInfo.getPointerInfo().getLocation();
 		return new Point(dim.x, dim.y);
 	}
 	
-	protected abstract void mousePress();
-	protected abstract void mouseRelease();
-
 }
